@@ -1,0 +1,366 @@
+/* reset */
+
+	* {
+
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		font-family: system-ui;
+
+	}
+
+/* globals styles */
+
+:root {
+
+	font-size: 16px;
+
+		/* spaces */
+
+  --space-3xs: clamp(0.31rem, calc(0.30rem + 0.06vw), 0.38rem);
+  --space-2xs: clamp(0.69rem, calc(0.68rem + 0.06vw), 0.75rem);
+  --space-xs: clamp(1.00rem, calc(0.98rem + 0.13vw), 1.13rem);
+  --space-s: clamp(1.31rem, calc(1.28rem + 0.19vw), 1.50rem);
+  --space-m: clamp(2.00rem, calc(1.95rem + 0.25vw), 2.25rem);
+  --space-l: clamp(2.63rem, calc(2.55rem + 0.38vw), 3.00rem);
+  --space-xl: clamp(3.94rem, calc(3.83rem + 0.56vw), 4.50rem);
+  --space-2xl: clamp(5.25rem, calc(5.10rem + 0.75vw), 6.00rem);
+  --space-3xl: clamp(7.88rem, calc(7.65rem + 1.13vw), 9.00rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.31rem, calc(0.23rem + 0.44vw), 0.75rem);
+  --space-2xs-xs: clamp(0.69rem, calc(0.60rem + 0.44vw), 1.13rem);
+  --space-xs-s: clamp(1.00rem, calc(0.90rem + 0.50vw), 1.50rem);
+  --space-s-m: clamp(1.31rem, calc(1.13rem + 0.94vw), 2.25rem);
+  --space-m-l: clamp(2.00rem, calc(1.80rem + 1.00vw), 3.00rem);
+  --space-l-xl: clamp(2.63rem, calc(2.25rem + 1.88vw), 4.50rem);
+  --space-xl-2xl: clamp(3.94rem, calc(3.53rem + 2.06vw), 6.00rem);
+  --space-2xl-3xl: clamp(5.25rem, calc(4.50rem + 3.75vw), 9.00rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1.31rem, calc(0.98rem + 1.69vw), 3.00rem);
+
+  /* font-size */
+
+  --step--3: clamp(0.77rem, calc(0.76rem + 0.01vw), 0.76rem);
+  --step--2: clamp(0.96rem, calc(0.90rem + 0.05vw), 0.91rem);
+  --step--1: clamp(1.20rem, calc(1.07rem + 0.11vw), 1.09rem);
+  --step-0: clamp(1.31rem, calc(1.28rem + 0.19vw), 1.50rem);
+  --step-1: clamp(1.58rem, calc(1.52rem + 0.30vw), 1.88rem);
+  --step-2: clamp(1.89rem, calc(1.80rem + 0.45vw), 2.34rem);
+  --step-3: clamp(2.27rem, calc(2.14rem + 0.66vw), 2.93rem);
+  --step-4: clamp(2.72rem, calc(2.53rem + 0.94vw), 3.66rem);
+  --step-5: clamp(3.27rem, calc(3.00rem + 1.31vw), 4.58rem);
+  --step-6: clamp(3.92rem, calc(3.56rem + 1.80vw), 5.72rem);
+
+	/* colors */
+
+	--body-bg-dark : #000000;
+	--child-bg-dark: #131313;
+	--body-text-dark: #f9f9f9;
+	--body-bg-light : #e6e4f4;
+	--child-bg-light: #f1f0f9;
+	--body-text-light: #110f0f;
+	--main-color: #34cc85;
+
+
+	
+}
+
+/* regla para los iconos de fuente */
+
+@font-face {
+
+  font-family: "bootstrap-icons";
+  src: url("../fonts/bootstrap-icons.woff2?524846017b983fc8ded9325d94ed40f3") format("woff2"),
+	url("../fonts/bootstrap-icons.woff?524846017b983fc8ded9325d94ed40f3") format("woff");
+
+}
+
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+  display: inline-block;
+  font-family: bootstrap-icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: -.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*----------- no-components-styles -------------*/
+
+a {text-decoration: none;}
+
+body {background-color: var(--body-bg-dark);}
+
+main {
+
+	display: flex;
+	flex-direction: column;
+	min-height: 93vh;
+
+}
+
+img {
+
+	width: 100%;
+	height: 100%;
+
+}
+
+/*----------- components-styles -------------*/
+
+/* Menu-hidden */
+
+.visible {
+
+	opacity: 1;
+	pointer-events: initial;
+	transform: translateY(0);
+
+} 
+
+.hidden {
+
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-10px);
+
+}
+
+.menu-container {position: relative;}
+
+.active-link
+
+/* contact cards */
+
+
+.last-message {
+
+	width: 80%;
+	height: 1.2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+}
+
+.contact > * {margin-left: var(--space-2xs);}
+
+.contact > i {font-size: var(--step-2);}
+
+.count-messages {
+
+	height: 1.3rem;
+	width: 1.3rem;
+	color: #000;
+	padding-bottom: .4rem;
+	background-color: var(--main-color);
+	border-radius: 50%;
+
+}
+
+.count-messages > b {
+
+	display: block;
+	font-size: var(--step--3);
+	text-align: center;
+
+}
+
+/* mensajes */ 
+
+.msg {
+
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	width: fit-content;
+	max-width: 50%;
+	margin-top: .6rem;
+	padding: .2rem .4rem;
+	overflow-wrap: break-word;
+
+}
+
+.msg > p {font-size: .9rem;}
+
+.msg > small {font-size: .6rem}
+
+.from-me {
+
+	margin-left: .5em;
+	border-radius: .5em .5em .5em 0;
+	background-color: var(--main-color);
+
+}
+
+.to-me	{
+
+	align-self: flex-end;
+	margin-right: .5em;
+	color: var(--body-text-dark);
+	border-radius: .5em .5em 0 .5em;
+	background-color: var(--child-bg-dark);
+
+}
+
+
+/* change Image Modal */
+
+.btn-crop {
+
+  position: fixed;
+	right: 5px;
+  bottom: 5px;
+  vertical-align: bottom;
+  padding: 6px 10px;
+  z-index: 999;
+  background-color: #DE3C50;
+  border: none;
+  border-radius: 5px;
+  color: #FFF;
+
+}
+
+.btn-crop img {
+
+  vertical-align: middle;
+  margin-left: 8px;
+
+}
+
+.preview {border-radius: 50%;}
+
+#conversations.active ~ div {transform: translateX(0%);}
+#contacts.active ~ div {transform: translateX(100%);}
+
+/* icons */
+
+.bi-three-dots-vertical::before { content: "\f5d3"; }
+.bi-chat-left-text-fill::before { content: "\f251"; }
+.bi-person-plus-fill::before { content: "\f4dc"; }
+.bi-x::before {content: "\f62a";}
+.bi-x-square::before { content: "\f629"; }
+.bi-person-circle::before { content: "\f4d7"; }
+.bi-send::before { content: "\f6c0"; }
+.bi-send-fill::before { content: "\f6b9"; }
+.bi-chat-text::before { content: "\f267"; }
+.bi-camera-video-fill::before { content: "\f21c"; }
+.bi-trash3-fill::before { content: "\f78a"; }
+.bi-search::before { content: "\f52a"; }
+.bi-exclamation-circle::before { content: "\f333"; }
+.bi-telephone-fill::before { content: "\f5b4"; }
+.bi-pen-fill::before { content: "\f4c7"; }
+.bi-check-circle::before { content: "\f26b"; }
+.bi-camera-fill::before { content: "\f219"; }
+.bi-save::before { content: "\f525"; }
+.bi-people-fill::before { content: "\f4cf"; }
+.bi-envelope-open-fill::before { content: "\f32d"; }
+.bi-check-lg::before { content: "\f633"; }
+.bi-arrow-left-circle::before { content: "\f12a"; }
+
+
+/* utility class */
+
+.d-flex {display: flex;}
+
+.body-bg-dark {background: var(--body-bg-dark);}
+
+.text-white {color: #f9f9f9;}
+
+.text-gray {color: #ccc;}
+
+.text-main-color{color: var(--main-color);}
+
+.bold-text {font-weight: bold;}
+
+.mr-lf {margin-left: var(--space-2xs);}
+
+.mr-rg {margin-right: var(--space-2xs);}
+
+.mr-lf-2 {margin-left: var(--space-xs);}
+
+.mr-rg-2 {margin-right: var(--space-xs);}
+
+.mr-tp {margin-top: var(--space-3xs);}
+
+.mr-tp-2 {margin-top: var(--space-2xs);}
+
+.mr-tp-l {margin-top: var(--space-l);}
+
+.side-padding {
+
+	padding-right: var(--space-2xs);
+	padding-left: var(--space-2xs);
+
+}
+
+.mr-center {
+
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.block {display: block;}
+
+.inline-b {display: inline-block;}
+
+.none {display: none;}
+
+.w-fit {width: fit-content;}
+
+.text-center {text-align: center;}
+
+.padding-tb {padding: var(--space-2xs) 0;}
+
+.fs--3 {font-size: var(--step--3);}
+.fs--2 {font-size: var(--step--2);}
+.fs--1 {font-size: var(--step--1);}
+.fs-0 {font-size: var(--step-0);}
+.fs-1 {font-size: var(--step-1);}
+.fs-2 {font-size: var(--step-2);}
+.fs-3 {font-size: var(--step-3);}
+.fs-4 {font-size: var(--step-4);}
+.fs-5 {font-size: var(--step-5);}
+.fs-6 {font-size: var(--step-6);}
+
+.text-center {text-align: center;}
+
+/* animaciones */
+
+@keyframes animation-modal {
+
+	0% {opacity: 0;}
+
+	100% {opacity: 1;}
+
+}
+
+@keyframes 	animation-child-modal {
+
+	0% {
+
+		opacity: 0;
+		transform: translateY(-10vh);
+
+	}
+
+	100% {
+
+		opacity: 1;
+		transform: translateY(0);
+
+	}
+
+}
+
+
+
+
+

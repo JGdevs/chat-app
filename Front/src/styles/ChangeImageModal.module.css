@@ -1,0 +1,94 @@
+.modal {
+
+	position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0005;
+  animation: animation-modal .2s ease forwards;
+
+}
+
+.icons {
+
+  position: absolute;
+  top: .5%;
+  right: 2%;
+
+}
+
+.cropComponent {
+
+  position: relative;
+  z-index: 999;
+  min-width: 19.25rem;
+  background-color: white;
+  border: white 3px solid;
+  overflow: hidden;
+
+}
+
+.cropComponent::selection {
+    background: transparent;
+}
+
+.cropBlur {
+    -webkit-filter: blur(10px) sepia(0.2);
+    filter: blur(10px) sepia(0.2);
+}
+
+.overlay {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;  
+  z-index: 999;
+  margin-left: -6.25rem;
+  margin-top: -6.25rem;
+  width: 10rem;
+  height: 10rem;
+  box-shadow: 0 0 0 3px white;
+  overflow: hidden;
+  box-sizing: content-box;
+
+}
+
+.overlay:hover,
+.overlay:active {cursor: move;}
+
+.overlay::selection {
+    background: transparent;
+}
+
+.overlay > img {
+
+  position: absolute;
+  display: block;
+
+}
+
+.cropImage,
+.overlay > img {
+
+  width: 95vw;
+  height: auto;
+  min-width: 19.25rem;
+  max-width: 31.25rem;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+
+}
+
+.cropImage {
+
+  display: block;
+  position: relative;
+  pointer-events: none;
+
+}

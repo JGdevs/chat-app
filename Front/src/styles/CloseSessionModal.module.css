@@ -1,0 +1,56 @@
+.modal {
+
+	position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0005;
+  animation: animation-modal .2s ease forwards;
+
+}
+
+.closeContainer {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50vh;
+  max-height: 12.5rem;
+  width: 80vw;
+  max-width: 25rem;
+  background-color: var(--child-bg-dark);
+  animation: animation-child-modal .2s ease forwards;
+
+
+}
+
+.closeOptions {
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.closeOptions > * {
+
+  width: 20%;
+  background-color: var(--main-color);
+  border: none;
+  border-radius: .2em;
+  font-weight: 900;
+
+}
+
+.closeOptions > *:hover {
+
+  background-color: var(--body-bg-dark);
+  color: var(--main-color);
+
+}

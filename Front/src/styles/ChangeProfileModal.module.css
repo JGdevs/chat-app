@@ -1,0 +1,105 @@
+.modal {
+
+	position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0005;
+  animation: animation-modal .2s ease forwards;
+
+}
+
+.form {
+
+  display: flex;
+  flex-direction: column;
+  height: 45vh;
+  max-height: 20rem;
+  width: 75vw;
+  max-width: 35rem;
+  border-radius: .2rem;
+  background-color: var(--child-bg-dark);
+  animation: animation-child-modal .2s ease forwards;
+
+
+}
+
+.formField {
+
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  width: 70%;
+  padding: 0 var(--space-3xs);
+  margin: 0 auto;
+  min-width: 10rem;
+  max-width: 20rem;
+
+}
+
+.formField > * {margin-top: var(--space-2xs);}
+
+.titleForm {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: thin solid white;
+  background-color: var(--child-bg-dark);
+
+}
+
+.formInput {
+
+  padding: var(--space-3xs) 0;
+  outline: none;
+
+}
+
+.submit {
+
+  padding: .5rem 1.5rem;
+  color: #fff;
+  font-weight: bold;
+  background-color: #000;
+  border: none;
+  outline: none;
+  border-radius: .2rem;
+  transition: background-color ease-in-out .2s;
+
+}
+
+.submit:hover {background-color: var(--main-color);}
+
+@keyframes animation-modal {
+
+  0% {opacity: 0;}
+
+  100% {opacity: 1;}
+
+}
+
+@keyframes  animation-child-modal {
+
+  0% {
+
+    opacity: 0;
+    transform: translateY(-10vh);
+
+  }
+
+  100% {
+
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+
+}
+
+

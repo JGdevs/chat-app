@@ -1,0 +1,27 @@
+.selectAll {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: var(--space-xs);
+	margin-bottom: var(--space-3xs);
+
+}
+
+.selectAllBtn {
+
+	margin-left: var(--space-2xs);
+	font-weight: 700;
+	padding: var(--space-3xs) var(--space-2xs);
+	background-color: var(--main-color);
+	border: none;
+	border-radius: .5em;
+
+}
+
+.selectAllBtn:focus {
+
+	background-color: var(--child-bg-dark);
+	color: var(--main-color);
+
+}

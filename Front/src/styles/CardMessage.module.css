@@ -1,0 +1,48 @@
+.conversationContainer {
+
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin-top: var(--space-2xs);
+	padding: var(--space-2xs) var(--space-3xs);
+	background-color: var(--child-bg-dark);
+	cursor: pointer;
+
+}
+
+.contactImg {
+
+	position: relative;
+	min-height: 4.5rem;
+	min-width: 4.5rem;
+	max-height: 4.5rem;
+	max-width: 4.5rem;
+
+}
+
+@media screen and (max-width: 27rem) {
+
+	.contactImg {
+
+		min-width: 3rem;
+		min-height: 3rem;
+		max-height: 3rem;
+		max-width: 3rem;
+
+	}
+
+}
+
+.contactImg > img {
+
+	border-radius: 50%;
+
+}
+
+.conversationInfo {
+
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+
+}

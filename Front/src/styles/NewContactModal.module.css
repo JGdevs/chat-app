@@ -1,0 +1,86 @@
+.modal {
+
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0005;
+  animation: animation-modal .2s ease forwards;
+
+}
+
+.contactForm {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 70vh;
+  max-height: 20rem;
+  width: 80vw;
+  max-width: 35rem;
+  padding-bottom: var(--space-2xs);
+  border-radius: .2rem;
+  background-color: var(--child-bg-dark);
+  animation: animation-child-modal .2s ease forwards;
+
+}
+
+.contactForm > input[type="text"] {width: 80%;}
+
+.titleForm {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: thin solid white;
+  background-color: var(--child-bg-dark);
+
+}
+
+.titleForm > i {
+
+  margin-right: var(--space-2xs);
+  font-size: var(--step-1);
+
+}
+
+.formField {
+
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 0 var(--space-3xs);
+  margin: 0 auto;
+  min-width: 15rem;
+  max-width: 20rem;
+
+}
+
+.formInput {
+
+  padding: var(--space-3xs) 0;
+  outline: none;
+
+} 
+
+.submit {
+
+  padding: .5rem 1.5rem;
+  color: #fff;
+  font-weight: bold;
+  background-color: #000;
+  border: none;
+  outline: none;
+  border-radius: .2rem;
+  transition: background-color ease-in-out .2s;
+
+}
+
+.submit:hover {background-color: var(--main-color);}
+
+

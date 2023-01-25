@@ -1,0 +1,121 @@
+.container {
+
+	position: relative;
+	height: 83vh;
+	overflow-y: auto;
+
+}
+
+.contactContainer {
+
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin-top: var(--space-2xs);
+	padding: var(--space-2xs) var(--space-3xs);
+	background-color: var(--child-bg-dark);
+	cursor: pointer;
+
+}
+
+.contactImg {
+
+	position: relative;
+	min-height: 4.5rem;
+	min-width: 4.5rem;
+	max-height: 4.5rem;
+	max-width: 4.5rem;
+
+}
+
+@media screen and (max-width: 27rem) {
+
+	.contactImg {
+
+		min-width: 3rem;
+		min-height: 3rem;
+		max-height: 3rem;
+		max-width: 3rem;
+
+	}
+
+}
+
+.contactImg > img {
+
+	border-radius: 50%;
+
+}
+
+.checkboxContainer {
+
+	position: absolute;
+	bottom: 0;
+	right: -5%;
+	display: inline-flex;
+	justify-content: space-evenly;
+	align-items: center;
+	cursor: pointer;
+
+}
+
+.checkboxInput {display: none;}
+
+.checkboxCheckbox {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 1.5rem;
+	height: 1.5rem;
+	border: thin solid #fff;
+	border-radius: 50%;
+	transition: background-color .2s ease;
+
+}
+
+.checkboxCheckbox > i {
+
+	color: #000;
+	opacity: 0;
+
+}
+
+.checkboxInput:checked + .checkboxCheckbox {
+
+	border: none;
+	background-color: var(--main-color);
+
+}
+
+.checkboxInput:checked + .checkboxCheckbox > i {
+
+	opacity: 1;
+
+}
+
+.conversationInfo {
+
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+
+}
+
+.newIcons {
+
+	position: absolute;
+	bottom: 5%;
+	right: 5%;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.8rem;
+	height: 3.8rem;
+	font-size: var(--step-2);
+	color: var(--body-text-dark);
+	border-radius: 50%;
+	background-color: var(--main-color);
+
+}

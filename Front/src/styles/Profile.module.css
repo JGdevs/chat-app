@@ -1,0 +1,93 @@
+.profileContactContainer {background-color: var(--child-bg-dark);}
+
+.profileImgContainer {
+
+	position: relative;
+	margin-top: var(--space-xs);
+
+}
+
+.profileImg {
+
+	position: relative;
+	height: 9.5rem;
+	width: 9.5rem;
+	border-radius: 50%;
+
+}
+
+.profileImg > img {
+
+	border-radius: 50%;
+	object-fit: cover;
+
+}
+
+.options {
+
+	display: flex;
+	justify-content: space-evenly;
+	width: 50vw;
+	max-width: 20rem;
+	margin-top: var(--space-3xs);
+	padding-bottom: var(--space-s);
+
+}
+
+.optionIcon > * {
+
+	display: block;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+.optionIcon > i {
+
+	font-size: var(--step-2);
+	color: var(--main-color);
+
+}
+
+.profileContactBio {
+
+	display: flex;
+	align-items: center;
+	margin-top: var(--space-s);
+	height: 12vh;
+	background-color: var(--child-bg-dark);
+
+}
+
+.profileContactBio > i {
+
+	color: var(--main-color);
+	margin-left: var(--space-xs);
+
+} 
+
+.profileContactBio > p {
+
+	margin-left: var(--space-s);
+	font-weight: 700;
+
+}
+
+.createGroupContainer {
+
+	display: flex;
+	align-items: center;
+	height: 12vh;
+	margin-top: var(--space-s);
+	background-color: var(--child-bg-dark);
+
+}
+
+.createGroupIcon {
+
+	height: 3rem;
+	width: 3rem;
+	background-color: var(--main-color);
+	border-radius: 50%;	
+
+}

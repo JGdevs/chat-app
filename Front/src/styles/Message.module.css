@@ -1,0 +1,16 @@
+.msg {
+
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	width: fit-content;
+	max-width: 50%;
+	margin-top: .6rem;
+	padding: .2rem .4rem;
+	overflow-wrap: break-word;
+
+}
+
+.msg > p {font-size: .9rem;}
+
+.msg > small {font-size: .6rem}

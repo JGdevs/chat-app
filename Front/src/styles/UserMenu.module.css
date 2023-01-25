@@ -1,0 +1,20 @@
+.menuHidden {
+
+	position: absolute;
+	right: 0;
+	z-index: 999;
+	width: clamp(8rem,30vw,10rem);
+	margin-right: var(--space-3xs);
+	padding: var(--space-3xs) var(--space-2xs);
+	background-color: var(--child-bg-dark);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+	
+}
+
+.menuHidden > * {
+
+	display: block;
+	padding: var(--space-3xs) 0;
+	cursor: pointer;
+	
+}

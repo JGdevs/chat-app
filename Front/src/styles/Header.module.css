@@ -1,0 +1,26 @@
+.header {
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 7vh;
+	width: 100%;
+
+}
+
+.menuContainer {position: relative;}
+
+
+.title {
+
+	margin-left: var(--space-2xs);
+	font-size: var(--step-1);
+
+}
+
+.icon {
+
+	margin-right: var(--space-3xs);
+	font-size: var(--step-1);
+
+}
