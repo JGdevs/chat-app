@@ -1,10 +1,13 @@
 import {useState,useEffect,useRef} from 'react';
 import {HelpHttp} from '../helpers/HelpHttp';
+import {changeImageProfile} from '../services/profile.js';
 import styles from '../styles/ChangeImageModal.module.css';
 
 const ChangeImageModal = ({image,close,userImage,imageRef}) => {
 
-	const containerRef = useRef(),
+	const user = JSON.parse(sessionStorage.getItem('user')),
+
+	containerRef = useRef(),
 
 	cropImgRef = useRef(),
 
@@ -281,15 +284,17 @@ const ChangeImageModal = ({image,close,userImage,imageRef}) => {
 
 		}
 
-		let url = `http://localhost:4000/changeImage/${id}`;
-
-		api.post(url,options).then(res => {
+		changeImageProfile(id,options).then(res => {
 
 			if(!res.err) {
 
 				removeHandlers();
 
 				imageRef.current.src = base64Img;
+
+				user.profileImage = base64Img;
+
+				sessionStorage.setItem('user',JSON.stringify(user,));
 
 				close(null);
 

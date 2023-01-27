@@ -1,6 +1,6 @@
 import {createContext,useContext,useState,useEffect} from 'react';
 import SocketContext from '../context/SocketContext';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {getConversations} from '../services/conversations.js'
 
 const ConversationsContext = createContext(),
 
@@ -11,8 +11,6 @@ ConversationsProvider = ({children}) => {
 	const [conversations,setConversations] = useState(null),
 
 	{socket} = useContext(SocketContext),
-
-	api = HelpHttp(),
 
 	createConversation = (contact,msg,num) => setConversations(prevConversations => [...prevConversations,{contact,lastMessage:msg,noReadMessages:num}]),
 
@@ -145,15 +143,13 @@ ConversationsProvider = ({children}) => {
 		sendMessage,
 		addMessage
 
-	}
+	};
 
 	useEffect(() => {
 
-		let {id} = JSON.parse(sessionStorage.getItem('user')),
+		let {id} = JSON.parse(sessionStorage.getItem('user'));
 
-		url = `http://localhost:4000/conversations/${id}`;
-
-		api.get(url).then(res => {
+		getConversations(id).then(res => {
 
 			if(!res.err) {
 

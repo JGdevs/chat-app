@@ -1,18 +1,16 @@
 import styles from '../styles/Profile.module.css'; 
-import {HelpHttp} from '../helpers/HelpHttp';
 import {useState,useEffect} from 'react';
+import {getContactInfo} from '../services/contacts.js';
 
 const Profile = () => {
 
 	const contact = JSON.parse(sessionStorage.getItem('contact')),
 
-	api = HelpHttp(),
-
 	[contactInfo,setContactInfo] = useState([]);
 
 	useEffect(() => {
 
-		api.get(contact.info).then(res => {
+		getContactInfo(contact.id).then(res => {
 
 			if(!res.err) {
 

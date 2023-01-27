@@ -2,6 +2,7 @@ import {useState,useRef,useLayoutEffect} from 'react';
 import ChangeImageModal from './ChangeImageModal';
 import ChangeProfileModal from './ChangeProfileModal'
 import styles from '../styles/MyProfile.module.css';
+import imgUser from '../profile-img.png';
 
 const MyProfile = () => {
 
@@ -13,7 +14,7 @@ const MyProfile = () => {
 
 	[image,setImage] = useState(null),
 
-	imageRef = useRef(),
+	imageRef = useRef(null),
 
 	changeImage = ({target}) => {
 
@@ -37,9 +38,13 @@ const MyProfile = () => {
 
 						(user.profileImage === "") 
 
-						? <i className="bi-person-circle text-white"></i> 
+						?	<div className={styles.profileImg}>
 
-						: <div className={styles.profileImg}>
+								<img src={imgUser} ref={imageRef}/>
+
+							</div>
+					
+						:	<div className={styles.profileImg}>
 
 								<img src={user.profileImage} ref={imageRef}/>
 

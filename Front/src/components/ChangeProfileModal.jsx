@@ -1,14 +1,12 @@
 import {useRef} from 'react';
-import {HelpHttp} from '../helpers/HelpHttp';
 import styles from '../styles/ChangeProfileModal.module.css';
+import {changeNameProfile,changeInfoProfile} from '../services/profile.js';
 
 const ChangeProfileModal = ({origin,currentValue,close}) => {
 
 	const inputRef = useRef(),
 
 	user = JSON.parse(sessionStorage.getItem('user')),
-
-	api = HelpHttp(),
 
 	handlerSubmit = () => {
 
@@ -20,9 +18,7 @@ const ChangeProfileModal = ({origin,currentValue,close}) => {
 
 	changeName = () => {
 
-		let url = `http://localhost:4000/modifyName/${user.id}/${inputRef.current.value}`
-
-		api.post(url).then(res => {
+		changeNameProfile(user.id,inputRef.current.value).then((res) => {
 
 			if(!res.err) {
 
@@ -32,7 +28,7 @@ const ChangeProfileModal = ({origin,currentValue,close}) => {
 
 				close(false);
 				
-			} 
+			}
 
 			else console.log(res.err);
 
@@ -42,9 +38,7 @@ const ChangeProfileModal = ({origin,currentValue,close}) => {
 
 	changeInfo = () => {
 
-		let url = `http://localhost:4000/modifyInfo/${user.id}/${inputRef.current.value}`;
-
-		api.post(url).then(res => {
+		changeInfoProfile(user.id,inputRef.current.value).then(res => {
 
 			if(!res.err) {
 
@@ -55,6 +49,8 @@ const ChangeProfileModal = ({origin,currentValue,close}) => {
 				close(false);
 
 			}
+
+			else console.log(res.err)
 
 		})
 		

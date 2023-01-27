@@ -1,12 +1,10 @@
 import {useLayoutEffect,useRef,useId} from 'react';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {getContactInfo} from '../services/contacts.js'
 import styles from '../styles/Contacts.module.css';
 
 const Contact = ({del,contact,setSelectContact,setBox}) => {
 
-	const api = HelpHttp(),
-
-	id = useId(),
+	const id = useId(),
 
 	infoRef = useRef(),
 
@@ -26,7 +24,7 @@ const Contact = ({del,contact,setSelectContact,setBox}) => {
 
 		else {
 
-			api.get(contact.info).then(res => {
+			getContactInfo(contact.id).then(res => {
 
 				if(!res.err) {
 

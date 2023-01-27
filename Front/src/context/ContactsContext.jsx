@@ -1,5 +1,5 @@
 import {createContext,useState,useEffect,useContext} from 'react';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {getContacts} from '../services/contacts.js';
 
 const ContactsContext = createContext(),
 
@@ -17,23 +17,24 @@ ContactsProvider = ({children}) => {
 		setContacts,
 		createContact,
 
-	},
-
-	api = HelpHttp();
+	};
 
 	useEffect(() => {
 
-		let {id} = JSON.parse(sessionStorage.getItem('user')),
+		let {id} = JSON.parse(sessionStorage.getItem('user'));
 
-		url = `http://localhost:4000/contacts/${id}`;
+		getContacts(id).then(res => {
 
-		api.get(url).then(res => {
+			if(!res.err) {
 
-			if(!res.err) setContacts(res);
+				setContacts(res);
+
+			}
 
 			else console.log(res.err);
 
-		});
+		})
+
 
 	},[]);
 

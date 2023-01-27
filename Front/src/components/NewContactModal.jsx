@@ -3,7 +3,6 @@ import useContacts from '../context/ContactsContext';
 import {HelpHttp} from '../helpers/HelpHttp';
 import styles from '../styles/NewContactModal.module.css';
 
-
 const NewContactModal = ({close}) => {
 
 	const {id} = JSON.parse(sessionStorage.getItem('user')),
@@ -23,8 +22,6 @@ const NewContactModal = ({close}) => {
 		let url = `http://localhost:4000/newContact/${id}`,
 
 		profileImage = `http://localhost:4000/profileImage/${idRef.current.value}`,
-
-		info = `http://localhost:4000/info/${idRef.current.value}`,
 
 		body = {
 
