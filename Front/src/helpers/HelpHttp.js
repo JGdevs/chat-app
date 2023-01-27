@@ -1,4 +1,4 @@
-export const HelpHttp = () => {
+export const HelpHttp = (baseURL) => {
 
 	const customFetch = (endpoint,options) => {
 
@@ -30,12 +30,20 @@ export const HelpHttp = () => {
 
 	}
 
-	const get = (url,options = {}) => customFetch(url,options);
+	const get = (url,options = {}) => {
+
+		if(baseURL) url = (url) ? baseURL + url : baseURL; 
+
+		return customFetch(url,options);
+
+	}
 
 
 	const post = (url,options = {}) => {
 
 		options.method = "POST";
+
+		if(baseURL) url = (url) ? baseURL + url : baseURL;
 
 		return customFetch(url,options);
 
@@ -45,6 +53,8 @@ export const HelpHttp = () => {
 
 		options.method = "PUT";
 
+		if(baseURL) url = (url) ? baseURL + url : baseURL;
+
 		return customFetch(url,options);
 
 	} 
@@ -52,6 +62,8 @@ export const HelpHttp = () => {
 	const del = (url,options = {}) => {
 
 		options.method = "DELETE";
+
+		if(baseURL) url = (url) ? baseURL + url : baseURL;
 
 		return customFetch(url,options);
 
