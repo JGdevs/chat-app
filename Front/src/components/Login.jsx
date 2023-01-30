@@ -1,6 +1,6 @@
 import {useState,useRef} from 'react';
 import {NavLink,useNavigate} from 'react-router-dom';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {userRegister,userLogin} from '../services/user.js';
 import Header from './Header';
 import styles from '../styles/login.module.css';
 
@@ -12,9 +12,7 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 	passRef = useRef(),
 
-	nav = useNavigate(),
-
-	api = HelpHttp();
+	nav = useNavigate();
 
 	function handlerSubmit (e) {
 
@@ -22,9 +20,7 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 		if(origin === 'Login') {
 
-			let url = `http://localhost:4000/login`,
-
-			body = {
+			let body = {
 
 				username:idRef.current.value,
 				password:passRef.current.value,
@@ -38,7 +34,7 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 			};
 
-			api.post(url,options).then(res => {
+			userLogin(options).then(res => {
 
 				if(!res.err) {
 
@@ -64,9 +60,7 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 		else {
 
-			let url = 'http://localhost:4000/register',
-
-			body = {
+			let body = {
 
 				username:idRef.current.value,
 				password:passRef.current.value,
@@ -81,7 +75,7 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 			};
 
-			api.post(url,options).then(res => {
+			userRegister(options).then(res => {
 
 				if(!res.err) {
 

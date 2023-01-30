@@ -1,5 +1,4 @@
 import {useState,useEffect,useRef} from 'react';
-import {HelpHttp} from '../helpers/HelpHttp';
 import {changeImageProfile} from '../services/profile.js';
 import styles from '../styles/ChangeImageModal.module.css';
 
@@ -15,9 +14,7 @@ const ChangeImageModal = ({image,close,userImage,imageRef}) => {
 
 	targetImgRef = useRef(),
 
-	{id,username} = JSON.parse(sessionStorage.getItem('user')),
-
-	api = HelpHttp();
+	{id,username} = JSON.parse(sessionStorage.getItem('user'));
 
 	let event_state = {},
 	ratio = 1.0,

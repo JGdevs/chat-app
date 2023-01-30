@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import useContacts from '../context/ContactsContext';
 import useConversations from '../context/ConversationsContext';
 import Contact from './Contact';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {createNewConversation} from '../services/conversations.js';
 import styles from '../styles/NewConversationModal.module.css';
 
 const NewConversationModal = ({close}) => {
@@ -11,8 +11,6 @@ const NewConversationModal = ({close}) => {
 	const [selectContact,setSelectContact] = useState(null),
 
 	{id,username} = JSON.parse(sessionStorage.getItem('user')),
-
-	api = HelpHttp(),
 
 	nav = useNavigate(),
 
@@ -36,9 +34,7 @@ const NewConversationModal = ({close}) => {
 
 		else {
 
-			let url = `http://localhost:4000/newConversation/${id}`,
-
-			body = {contactId:selectContact.id}
+			let	body = {contactId:selectContact.id};
 
 			const options = {
 
@@ -47,7 +43,7 @@ const NewConversationModal = ({close}) => {
 
 			}
 
-			api.post(url,options).then(res => {
+			createNewConversation(id,options).then(res => {
 
 				if(!res.err) {
 

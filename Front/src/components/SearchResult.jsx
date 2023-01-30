@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react';
 import {useParams,useNavigate} from 'react-router-dom';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {search} from '../services/search.js';
 import useContacts from '../context/ContactsContext';
 import Loader from './Loader';
 import CardSearchResult from './CardSearchResult';
@@ -23,10 +23,6 @@ const SearchResult = () => {
 	{searchValue} = useParams(),
 
 	nav = useNavigate(),
-
-	api = HelpHttp(),
-
-	url = `http://localhost:4000/SearchResult/${id}`,
 
 	handlerSearch = () => {
 
@@ -70,7 +66,7 @@ const SearchResult = () => {
 
 	useEffect(() =>{
 
-		api.get(url).then(res => {
+		search(id).then(res => {
 
 			if(!res.err) setSearchResult(() => {
 

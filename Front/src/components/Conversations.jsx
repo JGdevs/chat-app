@@ -6,7 +6,7 @@ import NewConversationModal from './NewConversationModal';
 import Loader from './Loader';
 import DeleteCounter from './DeleteCounter';
 import SearchForm from './SearchForm';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {deleteConversations} from '../services/conversations.js';
 import styles from '../styles/Conversations.module.css';
 
 const Conversations = () => {
@@ -20,8 +20,6 @@ const Conversations = () => {
 	[search,setSearch] = useState(false),
 
 	{id} = JSON.parse(sessionStorage.getItem('user')),
-
-	api = HelpHttp(),
 
 	{conversations,setConversations,sortConversations} = useConversations(),
 
@@ -47,9 +45,7 @@ const Conversations = () => {
 
 		if(del) {
 
-			let url = `http://localhost:4000/deleteConversations/${id}`,
-
-			options = {
+		 let options = {
 
 				body:box,
 				headers:{"content-type":"application/json"}
@@ -60,7 +56,7 @@ const Conversations = () => {
 
 			else {
 		
-				api.del(url,options).then(res => {
+				deleteConversations(url,options).then(res => {
 			
 					if(!res.err) {
 			

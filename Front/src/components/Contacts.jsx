@@ -1,11 +1,11 @@
 import {useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {HelpHttp} from '../helpers/HelpHttp';
 import useContacts from '../context/ContactsContext';
 import useConversations from '../context/ConversationsContext';
 import NewContactModal from './NewContactModal';
 import Contact from './Contact';
 import DeleteCounter from './DeleteCounter';
+import {deleteContact} from '../services/contacts.js';
 import SearchForm from './SearchForm';
 import styles from '../styles/Contacts.module.css';
 
@@ -22,8 +22,6 @@ const Contacts = () => {
 	[del,setDel] = useState(false),
 
 	nav = useNavigate(),
-
-	api = HelpHttp(),
 
 	{contacts,setContacts} = useContacts(),
 
@@ -55,9 +53,7 @@ const Contacts = () => {
 
 			if (!confirm) return false;
 
-			let url = `http://localhost:4000/deleteContacts/${id}`,
-
-			options = {
+			let options = {
 
 				body:box,
 				headers:{"content-type":"application/json"}
@@ -68,7 +64,7 @@ const Contacts = () => {
 
 			else {
 		
-				api.del(url,options).then(res => {
+				deleteContact(id,options).then(res => {
 			
 					if(!res.err) {
 			

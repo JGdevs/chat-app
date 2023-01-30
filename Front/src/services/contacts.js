@@ -39,3 +39,57 @@ export async function getContactInfo (id) {
 
 }
 
+export async function deleteContact (id,options) {
+
+	try {
+
+		const contactDeleted = await api.del(`/deleteContacts/${id}`,options);
+
+		return contactDeleted;
+
+	}
+
+	catch (err) {
+
+		console.log(err);
+
+	}
+
+}
+
+export async function createNewContact (id,options) {
+
+	try {
+
+		let newContact = await api.post(`/newContact/${id}`);
+
+		return newContact;
+
+	}
+
+	catch (err) {
+
+		console.log(err);
+
+	}
+
+}
+
+export async function getContactImage (id) {
+
+	try {
+
+		const contactImages = await api.get(`/profileImage/${id}`);
+
+		return contactImages;
+
+	}
+
+	catch (err) {
+
+		console.log(err);
+
+	}
+
+}
+

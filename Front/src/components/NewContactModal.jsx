@@ -1,13 +1,11 @@
 import {useRef} from 'react';
 import useContacts from '../context/ContactsContext';
-import {HelpHttp} from '../helpers/HelpHttp';
+import {getContactImage,createNewContact} from '../services/contacts.js';
 import styles from '../styles/NewContactModal.module.css';
 
 const NewContactModal = ({close}) => {
 
 	const {id} = JSON.parse(sessionStorage.getItem('user')),
-
-	api = HelpHttp(),
 
 	{createContact} = useContacts();
 
@@ -19,9 +17,7 @@ const NewContactModal = ({close}) => {
 
 		e.preventDefault();
 
-		let url = `http://localhost:4000/newContact/${id}`,
-
-		profileImage = `http://localhost:4000/profileImage/${idRef.current.value}`,
+		let profileImage = getContactImage(idRef.current.value),
 
 		body = {
 
@@ -39,7 +35,7 @@ const NewContactModal = ({close}) => {
 
 		}
 
-		api.post(url,options).then(res => {
+		createNewContact(idRef.current.value,options).then(res => {
 
 			if(!res.err) {
 
