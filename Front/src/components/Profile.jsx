@@ -1,12 +1,13 @@
 import styles from '../styles/Profile.module.css'; 
 import {useState,useEffect} from 'react';
 import {getContactInfo} from '../services/contacts.js';
+import imgUser from '../profile-img.png';
 
 const Profile = () => {
 
 	const contact = JSON.parse(sessionStorage.getItem('contact')),
 
-	[contactInfo,setContactInfo] = useState([]);
+	[contactInfo,setContactInfo] = useState({});
 
 	useEffect(() => {
 
@@ -22,7 +23,7 @@ const Profile = () => {
 
 		})
 
-	},[contact.info]);
+	},[]);
 
 	return (
 
@@ -36,9 +37,17 @@ const Profile = () => {
 
 						(contact.profileImage === "") 
 
-						? <i className="bi-person-circle text-white"></i> 
+						? <div className={styles.profileImg}>
 
-						: <div className={styles.profileImg}><img src={contact.profileImage}/></div>
+								<img src={imgUser}/>
+
+							</div> 
+
+						: <div className={styles.profileImg}>
+
+								<img src={contact.profileImage}/>
+
+							</div>
 
 					}
 

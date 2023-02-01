@@ -61,27 +61,9 @@ export async function createNewContact (id,options) {
 
 	try {
 
-		let newContact = await api.post(`/newContact/${id}`);
+		let newContact = await api.post(`/newContact/${id}`,options);
 
 		return newContact;
-
-	}
-
-	catch (err) {
-
-		console.log(err);
-
-	}
-
-}
-
-export async function getContactImage (id) {
-
-	try {
-
-		const contactImages = await api.get(`/profileImage/${id}`);
-
-		return contactImages;
 
 	}
 

@@ -30,7 +30,6 @@ export async function changeNameProfile (id,value) {
 
 	}
 
-
 	catch (err) {
 
 		console.log(err);
@@ -48,7 +47,6 @@ export async function changeInfoProfile (id,value) {
 		return profileInfo;
 
 	}
-
 
 	catch (err) {
 

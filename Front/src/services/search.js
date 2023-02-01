@@ -2,7 +2,7 @@ import {HelpHttp} from '../helpers/HelpHttp.js';
 
 const api = HelpHttp('http://localhost:4000');
 
-export async function search (id) {
+export async function searchServices (id) {
 
 	try {
 

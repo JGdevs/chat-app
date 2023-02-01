@@ -1,6 +1,6 @@
 import {useRef} from 'react';
 import useContacts from '../context/ContactsContext';
-import {getContactImage,createNewContact} from '../services/contacts.js';
+import {createNewContact} from '../services/contacts.js';
 import styles from '../styles/NewContactModal.module.css';
 
 const NewContactModal = ({close}) => {
@@ -17,14 +17,13 @@ const NewContactModal = ({close}) => {
 
 		e.preventDefault();
 
-		let profileImage = getContactImage(idRef.current.value),
+		let profileImage = `http://localhost:4000/profileImage/${idRef.current.value}`,
 
 		body = {
 
 			id:idRef.current.value,
 			name:nameRef.current.value,
-			profileImage,
-			info
+			profileImage
 
 		},
 
@@ -35,11 +34,11 @@ const NewContactModal = ({close}) => {
 
 		}
 
-		createNewContact(idRef.current.value,options).then(res => {
+		createNewContact(id,options).then(res => {
 
 			if(!res.err) {
 
-				createContact(idRef.current.value,nameRef.current.value,profileImage,info);
+				createContact(idRef.current.value,nameRef.current.value,profileImage);
 
 				close(false);
 

@@ -6,6 +6,7 @@ import SocketContext from '../context/SocketContext';
 import Message from './Message';
 import Loader from './Loader';
 import styles from '../styles/OpenConversation.module.css';
+import {sendMsgServices,getMsgServices} from '../services/message.js';
 
 const OpenConversation = () => {
 
@@ -77,9 +78,7 @@ const OpenConversation = () => {
 
 		if(msg.emisor === contact.id) {
 
-			let url = `http://localhost:4000/newMessage/${msg.receptor}`,
-
-			body = msg;
+			let body = msg;
 
 			const options = {
 
@@ -88,7 +87,7 @@ const OpenConversation = () => {
 
 			}
 
-			api.post(url,options).then(res => {
+			sendMsgServices(msg.receptor,options).then(res => {
 
 				if(!res.err) {
 
@@ -190,9 +189,7 @@ const OpenConversation = () => {
 
 		let range = 0;
 
-		let url = `http://localhost:4000/messages/${id}/${contact.id}/${range}`;
-
-		api.get(url).then(res => {
+		getMsgServices(id,contact.id,range).then(res => {
 
 			if(!res.err) {
 

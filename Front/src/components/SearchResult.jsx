@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react';
 import {useParams,useNavigate} from 'react-router-dom';
-import {search} from '../services/search.js';
+import {searchServices} from '../services/search';
 import useContacts from '../context/ContactsContext';
 import Loader from './Loader';
 import CardSearchResult from './CardSearchResult';
@@ -66,7 +66,7 @@ const SearchResult = () => {
 
 	useEffect(() =>{
 
-		search(id).then(res => {
+		searchServices(id).then(res => {
 
 			if(!res.err) setSearchResult(() => {
 

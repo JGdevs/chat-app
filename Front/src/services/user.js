@@ -6,7 +6,7 @@ export async function userRegister (options) {
 
 	try {
 
-		const register = await api.post(`/register`);
+		const register = await api.post(`/register`,options);
 
 		return register;
 
@@ -24,7 +24,7 @@ export async function userLogin (options) {
 
 	try {
 
-		const login = await api.post(`/login`);
+		const login = await api.post(`/login`,options);
 
 		return login;
 

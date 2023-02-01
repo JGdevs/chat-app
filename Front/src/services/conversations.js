@@ -8,7 +8,7 @@ export async function getConversations (id) {
 
 		const conversations = await api.get(`/conversations/${id}`);
 
-		return conversations
+		return conversations;
 
 	}
 
@@ -42,7 +42,7 @@ export async function createNewConversation (id,options) {
 
 	try {
 
-		const newConversation = await api.post(`/newConversation/${id}`)
+		const newConversation = await api.post(`/newConversation/${id}`,options)
 
 		return newConversation;
 
