@@ -126,8 +126,7 @@ app.post('/login', async (req,res,next) => {
 
 		if(user == null) {
 
-			res.statusMessage = 'El usuario no existe';
-			return res.sendStatus(404);
+			return res.status(status).json({ message:`el usuario ${username} no existe` });
 
 		}
 

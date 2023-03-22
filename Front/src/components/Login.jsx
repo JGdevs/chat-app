@@ -12,6 +12,8 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 	passRef = useRef(),
 
+	errorRef = useRef(),
+
 	nav = useNavigate();
 
 	function handlerSubmit (e) {
@@ -38,21 +40,23 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 				if(!res.err) {
 
-					if(!res.user) {
-
-						setError({msg:idRef.current.value});
-
-						return false;
-
-					}
-
 					sessionStorage.setItem('user',JSON.stringify(res.user));
 
-					onIdSubmit(res.user);
+					onIdSubmit(res);
 
 				}
 
-				else console.log(res.err);
+				else {
+
+					errorRef.current.textContent = res.message;
+					errorRef.current.classList.remove('none');
+					setTimeout(() => {
+
+						errorRef.current.classList.add('none');
+
+					},5000)
+
+				}
 
 			});
 
@@ -131,7 +135,7 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 							}
 
-							{error && <p className="text-white">el usuario <b className="text-red">{error.msg}</b> no existe</p>}
+							<p className="text-white none" ref={errorRef}>el usuario <b className="text-red">{error.msg}</b> no existe</p>
 
 						</div>
 						
