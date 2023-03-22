@@ -135,7 +135,7 @@ const Login = ({onIdSubmit,origin,login}) => {
 
 							}
 
-							<p className="text-white none" ref={errorRef}>el usuario <b className="text-red">{error.msg}</b> no existe</p>
+							<p className="text-white none" ref={errorRef}></p>
 
 						</div>
 						
