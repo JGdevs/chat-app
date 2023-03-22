@@ -30,7 +30,7 @@ const client = new AWSClientS3(config);
 
 //conectandose con mongo
 
-Schema = mongoose.Schema,
+const Schema = mongoose.Schema,
 
 userSchema = new Schema({
 
