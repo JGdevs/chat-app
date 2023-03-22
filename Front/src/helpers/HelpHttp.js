@@ -2,6 +2,10 @@ export const HelpHttp = (baseURL) => {
 
 	const customFetch = (endpoint,options) => {
 
+		if (baseURL) endpoint = (endpoint) ? baseURL + endpoint : baseURL;
+
+		if (typeof endpoint !== 'string') throw new Error(`excepected a URL but got ${typeof endpoint}`);
+
 		const defaultHeaders = {
 
 			accept: "application/json",
@@ -32,8 +36,6 @@ export const HelpHttp = (baseURL) => {
 
 	const get = (url,options = {}) => {
 
-		if(baseURL) url = (url) ? baseURL + url : baseURL; 
-
 		return customFetch(url,options);
 
 	}
@@ -43,8 +45,6 @@ export const HelpHttp = (baseURL) => {
 
 		options.method = "POST";
 
-		if(baseURL) url = (url) ? baseURL + url : baseURL;
-
 		return customFetch(url,options);
 
 	} 
@@ -53,8 +53,6 @@ export const HelpHttp = (baseURL) => {
 
 		options.method = "PUT";
 
-		if(baseURL) url = (url) ? baseURL + url : baseURL;
-
 		return customFetch(url,options);
 
 	} 
@@ -62,8 +60,6 @@ export const HelpHttp = (baseURL) => {
 	const del = (url,options = {}) => {
 
 		options.method = "DELETE";
-
-		if(baseURL) url = (url) ? baseURL + url : baseURL;
 
 		return customFetch(url,options);
 
@@ -80,5 +76,3 @@ export const HelpHttp = (baseURL) => {
 	}
 
 }
-
-	

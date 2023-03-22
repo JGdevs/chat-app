@@ -1,25 +1,34 @@
 'use strict';
 
-const express = require('express'),
+const require('dotenv').config(),
+
+express = require('express'),
 
 mongoose = require('mongoose'),
 
-restFull = require('express-method-override')('_method'),
+AWSClientS3 = require("aws-client-s3"),
 
-bodyParser = require('body-parser'),
+bcrypt = require('bcrypt'),
 
-fs = require('fs'),
+{Buffer} = require('buffer'),
 
-port = (process.env.PORT || 4000),
+port = (process.env.PORT || 4000);
+
+mongoose.set('strictQuery', false);
+
+//configurando el bucket
+
+const config = {
+	region:process.env.BUCKET_REGION,
+	credentials: {
+		accessKeyId:process.env.ACCESS_KEY,
+		secretAccessKey:process.env.SECRECT_ACCESS_KEY
+	}
+}
+
+const client = new AWSClientS3(config);
 
 //conectandose con mongo
-	
-conf = {
-
-	host:'localhost',
-	db:'chatbase'
-
-},
 
 Schema = mongoose.Schema,
 
@@ -36,7 +45,7 @@ userSchema = new Schema({
 
 conn = mongoose.model("users",userSchema);
 
-mongoose.connect(`mongodb:\/\/${conf.host}/${conf.db}`);
+mongoose.connect(process.env.MONGO_URI);
 
 //fin conexion mongo
 
@@ -58,15 +67,7 @@ http.listen(port,() => console.log(`Iniciando express en el puerto ${port}`));
 
 // ejecutando middlewares
 
-//parse application/json
-
-//parse application/x-www-form-urlencoded
-
-app.use(bodyParser.json({limit:'50mb'}));
-
-app.use(bodyParser.urlencoded({extended:false,limit:'50mb'}));
-
-app.use(restFull);
+app.use(express.json({limit:'10mb'}));
 
 app.use((req,res,next) => {
 
@@ -81,68 +82,86 @@ app.use((req,res,next) => {
 
 });
 
-app.post('/register',(req,res,next) => {
+app.post('/register', async (req,res,next) => {
 
-	let user = req.body;
+	const {username,password} = req.body;
 
-	conn.create(user,(err) => {
+	try {
 
-		if(err) throw err;
+		if(await conn.findOne({username})) {
 
-		res.sendStatus(200);
+			res.statusMessage(`el usuario ${username} ya existe`);
 
-	});
-
-});
-
-app.post('/login',(req,res,next) => {
-
-	let {username,password} = req.body;
-
-	conn.findOne({username,password}).exec((err,user) => {
-
-		if(err) throw err;
-
-		if(!user) {
-
-			let response = {
-
-				err:false,
-				user
-
-			}
-
-			res.writeHead(200,{'content-type':'application/json'});
-
-			res.end(JSON.stringify(response));
+			return res.sendStatus(409);
 
 		}
 
-		else {
+		const hashedPass = await bcrypt.hash(password,10),
 
-			user = {
+		user = {username,password:hashedPass};
+
+		await conn.create(user);
+
+		res.sendStatus(201);
+
+
+	}
+
+	catch (err) {
+
+		console.log(err);
+		res.sendStatus(500);
+
+	}
+
+});
+
+app.post('/login', async (req,res,next) => {
+
+	const {username,password} = req.body;
+
+	try {
+
+		const user = await conn.findOne({username});
+
+		if(user == null) {
+
+			res.statusMessage = 'El usuario no existe';
+			return res.sendStatus(404);
+
+		}
+
+		else if(await bcrypt.compare(password,user.password)) {
+
+			const response = JSON.stringify({
 
 				id:user._id,
 				username:user.username,
 				profileImage:user.profileImage,
 				info:user.info
 
-			}
-
-			let response = {
-
-				err:false,
-				user
-
-			}
+			});
 
 			res.writeHead(200,{'content-type':'application/json'});
-
-			res.end(JSON.stringify(response));
+			res.end(response);
 
 		}
 
-	});	
+		else {
+
+			res.statusMessage = 'contrasenia incorrecta';
+			res.sendStatus(401);
+
+		}
+
+	}
+
+	catch (err) {
+
+		console.log(err);
+		res.sendStatus(500);
+
+	}
 
 });
 
