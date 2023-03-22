@@ -1,8 +1,8 @@
 'use strict';
 
-const require('dotenv').config(),
+require('dotenv').config();
 
-express = require('express'),
+const express = require('express'),
 
 mongoose = require('mongoose'),
 
